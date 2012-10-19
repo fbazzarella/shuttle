@@ -1,6 +1,6 @@
 # Shuttle
 
-TODO: Write a gem description
+A simplest continuous integration for a Rails application. Enjoy it!
 
 ## Installation
 
@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    $ rake shuttle
 
 ## Contributing
 

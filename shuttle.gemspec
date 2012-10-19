@@ -4,12 +4,10 @@ require File.expand_path('../lib/shuttle/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Felipe Bazzarella"]
   gem.email         = ["fbazzarella@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{A simplest continuous integration for a Rails application. Enjoy it!}
+  gem.summary       = %q{Get a new code from another team members, install new gems, run new migrations, run specs and verify his code coverage and send your new feature to the origin repository. At the simplest way!}
 
   gem.files         = `git ls-files`.split($\)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "shuttle"
   gem.require_paths = ["lib"]
