@@ -13,5 +13,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Shuttle::VERSION
 
-  gem.add_dependency('colored')
+  gem.add_runtime_dependency('colored')
 end
