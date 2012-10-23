@@ -22,6 +22,10 @@ namespace :shuttle do
     sh 'bundle install --quiet'
   end
 
+  task spec: 'db:test:prepare' do
+    sh 'rspec spec'
+  end
+
   task start: ['git:check', 'log:clear', 'tmp:clear', 'git:pull']
 
   def p80(message)

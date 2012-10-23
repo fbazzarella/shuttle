@@ -2,5 +2,5 @@ steps:
   1: 'shuttle:start'
   2: 'shuttle:bundle'
   3: 'db:migrate'
-  4: 'spec'
+  4: 'shuttle:spec'
   5: 'shuttle:git:push'
