@@ -1,6 +1,5 @@
 namespace :shuttle do
   namespace :git do
-    desc 'Check for nothing to be commit'
     task :check do
       out = `git status`
 
@@ -10,18 +9,15 @@ namespace :shuttle do
       end
     end
 
-    desc 'Update files from repository'
     task :pull do
       sh "git pull --rebase"
     end
 
-    desc 'Send files to repository'
     task :push do
       sh "git push"
     end
   end
 
-  desc 'Run bundle'
   task :bundle do
     sh 'bundle install --quiet'
   end
