@@ -37,26 +37,25 @@ end
 
 desc 'Integrate the project code'
 task :shuttle do
-  if !defined?(SHUTTLE_STEPS)
+  if Shuttle.steps.nil?
     require 'colored'
 
     puts %{
-      You should define SHUTTLE_STEPS constant. We recommend that you define it on lib/tasks/shuttle.rake.
+      You should define Shuttle Steps! We recommend that you define it on config/shuttle.yml.
 
       A sample content look like this:
 
-        SHUTTLE_STEPS = %w(
-          shuttle:start
-          shuttle:bundle
-          db:migrate
-          spec
-          shuttle:git:push
-        )
+      steps:
+        1: 'shuttle:start'
+        2: 'shuttle:bundle'
+        3: 'db:migrate'
+        4: 'spec'
+        5: 'shuttle:git:push'
     }.yellow
     exit
   end
 
-  SHUTTLE_STEPS.each do |step|
+  Shuttle.steps.values.each do |step|
     p80("Executing #{step}...") do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
       Rake::Task[step].invoke
