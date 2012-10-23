@@ -2,19 +2,21 @@
 
 A simplest continuous integration for a Rails application. Enjoy it!
 
+Get a new code from another team members, install new gems, run new migrations, run specs and send your new feature to the origin repository. At the simplest way!
+
 ## Installation
 
 Add this line to your application's Gemfile:
 
     gem 'shuttle'
 
-And then execute:
+Install the gem with Bundler:
 
     $ bundle
 
-Or install it yourself as:
+And then configure default Shuttle Steps:
 
-    $ gem install shuttle
+    $ rails g shuttle:install
 
 ## Usage
 
