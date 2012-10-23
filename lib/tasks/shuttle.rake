@@ -41,16 +41,9 @@ task :shuttle do
     require 'colored'
 
     puts %{
-      You should define Shuttle Steps! We recommend that you define it on config/shuttle.yml.
+      You should define Shuttle Steps!
 
-      A sample content look like this:
-
-      steps:
-        1: 'shuttle:start'
-        2: 'shuttle:bundle'
-        3: 'db:migrate'
-        4: 'spec'
-        5: 'shuttle:git:push'
+      Just run 'rails g shuttle:install' to define default steps at 'config/shuttle.yml'.
     }.yellow
     exit
   end
