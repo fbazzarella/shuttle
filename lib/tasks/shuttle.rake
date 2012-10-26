@@ -43,9 +43,8 @@ task :shuttle, :stage do |t, args|
     require 'colored'
 
     puts %{
-      You should define Shuttle Steps in 'config/initializers/shuttle.rb'.
-
-      Or run 'rails g shuttle:install' to create this file with default steps.
+  You should define Shuttle Steps in 'config/initializers/shuttle.rb'.
+  Or run 'rails g shuttle:install' to create this file with default steps.
     }.yellow
 
     exit
@@ -58,9 +57,7 @@ task :shuttle, :stage do |t, args|
     end
   end
 
-  repository = Shuttle.stages[args[:stage].try(:to_sym)]
-
-  if repository.present?
+  if repository = Shuttle.stages.try(:[], args[:stage].try(:to_sym))
     p80("Executing deploy to #{args[:stage].to_s}...") do
       sh "git push #{repository} HEAD:master -f"
     end
