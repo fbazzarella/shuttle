@@ -36,7 +36,9 @@ namespace :shuttle do
 end
 
 desc 'Launch the code to the space!'
-task shuttle: :environment do
+task :shuttle, :stage do |t, args|
+  Rake::Task[:environment].invoke
+
   if Shuttle.steps.blank?
     require 'colored'
 
@@ -53,6 +55,14 @@ task shuttle: :environment do
     p80("Executing #{step}...") do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
       Rake::Task[step].invoke
+    end
+  end
+
+  repository = Shuttle.stages[args[:stage].try(:to_sym)]
+
+  if repository.present?
+    p80("Executing deploy to #{args[:stage].to_s}...") do
+      sh "git push #{repository} HEAD:master -f"
     end
   end
 end

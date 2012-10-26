@@ -10,4 +10,11 @@ Shuttle.setup do |s|
     'shuttle:git:push'
   ]
 
+  # TODO: Setup Stages Description
+
+  # s.stages = {
+  #   staging:    'your@server.com:staging-repository.git',
+  #   production: 'your@server.com:production-repository.git'
+  # }
+
 end
