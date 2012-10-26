@@ -35,20 +35,21 @@ namespace :shuttle do
   end
 end
 
-desc 'Integrate the project code'
-task :shuttle do
-  if Shuttle.steps.nil?
+desc 'Launch the code to the space!'
+task shuttle: :environment do
+  if Shuttle.steps.blank?
     require 'colored'
 
     puts %{
-      You should define Shuttle Steps!
+      You should define Shuttle Steps in 'config/initializers/shuttle.rb'.
 
-      Just run 'rails g shuttle:install' to define default steps at 'config/shuttle.yml'.
+      Or run 'rails g shuttle:install' to create this file with default steps.
     }.yellow
+
     exit
   end
 
-  Shuttle.steps.values.each do |step|
+  Shuttle.steps.each do |step|
     p80("Executing #{step}...") do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
       Rake::Task[step].invoke
