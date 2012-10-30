@@ -1,10 +1,15 @@
+require 'colored'
+
 namespace :shuttle do
   namespace :git do
     task :check do
       out = `git status`
 
       if out.include?('Untracked files:') || out.include?('unmerged:') || out.include?('modified:')
-        puts out
+        puts %{
+  You have some files to be commit. Please check it with 'git status'.
+        }.red
+
         exit
       end
     end
@@ -40,8 +45,6 @@ task :shuttle, :stage do |t, args|
   Rake::Task[:environment].invoke
 
   if Shuttle.steps.blank?
-    require 'colored'
-
     puts %{
   You should define Shuttle Steps in 'config/initializers/shuttle.rb'.
   Or run 'rails g shuttle:install' to create this file with default steps.
@@ -52,7 +55,6 @@ task :shuttle, :stage do |t, args|
 
   Shuttle.steps.each do |step|
     p80("Executing #{step}...") do
-      RAILS_ENV = ENV['RAILS_ENV'] || 'development'
       Rake::Task[step].invoke
     end
   end
