@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require File.expand_path('../lib/shuttle/version', __FILE__)
 
 Gem::Specification.new do |gem|
@@ -13,5 +12,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Shuttle::VERSION
 
-  gem.add_runtime_dependency('colored')
+  gem.add_dependency('colored')
 end
