@@ -33,9 +33,7 @@ namespace :shuttle do
 end
 
 desc 'Launch the code to space!'
-task :shuttle, :stage do |t, args|
-  Rake::Task[:environment].invoke
-
+task :shuttle, [:stages] => :environment do |t, args|
   if Shuttle.steps.blank?
     puts %{
   You should define Shuttle Steps in 'config/initializers/shuttle.rb'.
@@ -57,9 +55,11 @@ task :shuttle, :stage do |t, args|
     end
   end
 
-  if repository = Shuttle.stages.try(:[], args[:stage].try(:to_sym))
-    p80("Executing deploy to #{args[:stage].to_s}...") do
-      sh "git push #{repository} HEAD:master -f"
+  args[:stages].split(':').each do |stage|
+    if repository = Shuttle.stages.try(:[], stage.try(:to_sym))
+      p80("Executing deploy to #{args[:stage].to_s}...") do
+        sh "git push #{repository} HEAD:master -f"
+      end
     end
   end
 end
