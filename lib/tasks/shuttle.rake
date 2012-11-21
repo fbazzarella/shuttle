@@ -30,17 +30,9 @@ namespace :shuttle do
   task spec: 'db:test:prepare' do
     sh 'rspec spec'
   end
-
-  task start: ['git:check', 'log:clear', 'tmp:clear', 'git:pull']
-
-  def p80(message)
-    puts '-' * 80
-    puts message if message
-    yield if block_given?
-  end
 end
 
-desc 'Launch the code to the space!'
+desc 'Launch the code to space!'
 task :shuttle, :stage do |t, args|
   Rake::Task[:environment].invoke
 
@@ -51,6 +43,12 @@ task :shuttle, :stage do |t, args|
     }.yellow
 
     exit
+  end
+
+  def p80(message)
+    puts '-' * 80
+    puts message if message
+    yield if block_given?
   end
 
   Shuttle.steps.each do |step|
