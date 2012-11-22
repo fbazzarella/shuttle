@@ -55,10 +55,12 @@ task :shuttle, [:stages] => :environment do |t, args|
     end
   end
 
-  args[:stages].split(':').each do |stage|
-    if repository = Shuttle.stages.try(:[], stage.try(:to_sym))
-      p80("Executing deploy to #{stage}...") do
-        sh "git push #{repository} HEAD:master -f"
+  if args[:stages].present?
+    args[:stages].split(':').each do |stage|
+      if repository = Shuttle.stages.try(:[], stage.try(:to_sym))
+        p80("Executing deploy to #{stage}...") do
+          sh "git push #{repository} HEAD:master -f"
+        end
       end
     end
   end
