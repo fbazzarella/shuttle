@@ -1,12 +1,12 @@
 # Shuttle
 
-A simplest continuous integration for a Rails application. Enjoy it!
+A simple continuous integration for a Rails application. Enjoy it!
 
-Get a new code from another team members, install new gems, run new migrations, run specs, send your new feature to the origin repository and deploy your application. At the simplest way!
+Get a new code from another team members, install new gems, run new migrations, run specs, send your new feature to the origin repository and deploy your application. At simplest way!
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line into your application's Gemfile:
 
     gem 'shuttle'
 
@@ -20,7 +20,7 @@ And then configure default Shuttle Steps:
 
     $ rails g shuttle:install
     
-This will create a configuration file in `config/initializers/shuttle.rb` looks like this:
+This will create a configuration file in `config/initializers/shuttle.rb` who looks like this:
 
     Shuttle.setup do |s|
       s.steps = [
@@ -44,7 +44,7 @@ This will create a configuration file in `config/initializers/shuttle.rb` looks 
 
 #### Shuttle Steps
 
-The steps are nothing more than Rake tasks that are performed at the time of integration. The order of the steps in the array will be the order they will be executed. You have the freedom to rearrange, add or delete steps according to your need.
+The steps are nothing more than Rake tasks, performed at the integration time. The array steps order will be the execution order. You have the freedom to rearrange, add or delete steps according to your need.
 
 ##### Shuttle's pre-defined Steps:
 
