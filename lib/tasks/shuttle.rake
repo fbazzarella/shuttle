@@ -36,8 +36,8 @@ desc 'Launch the code to space!'
 task :shuttle, [:stages] => :environment do |t, args|
   if Shuttle.steps.blank?
     puts %{
-  You should define Shuttle Steps in 'config/initializers/shuttle.rb'.
-  Or run 'rails g shuttle:install' to create this file with default steps.
+  You should define Shuttle Steps and Stages in 'config/shuttle.yml'.
+  Or run 'rails g shuttle:install' to create this file with default steps and stages.
     }.yellow
 
     exit
@@ -57,7 +57,7 @@ task :shuttle, [:stages] => :environment do |t, args|
 
   if args[:stages].present?
     args[:stages].split(':').each do |stage|
-      if repository = Shuttle.stages.try(:[], stage.try(:to_sym))
+      if repository = Shuttle.stages.try(:[], stage)
         p80("Executing deploy to #{stage}...") do
           sh "git push #{repository} HEAD:master -f"
         end

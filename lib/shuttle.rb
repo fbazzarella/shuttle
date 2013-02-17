@@ -1,9 +1,19 @@
 require "shuttle/railtie"
 
 module Shuttle
-  mattr_accessor :steps, :stages
+  def self.yaml
+    begin
+      YAML.load_file(Rails.root.join('config/shuttle.yml').to_s)
+    rescue Errno::ENOENT
+      nil
+    end
+  end
 
-  def self.setup
-    yield self
+  def self.steps
+    yaml['steps'] if yaml.present?
+  end
+
+  def self.stages
+    yaml['stages'] if yaml.present?
   end
 end
