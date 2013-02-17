@@ -20,25 +20,21 @@ And then configure default Shuttle Steps:
 
     $ rails g shuttle:install
     
-This will create a configuration file in `config/initializers/shuttle.rb` who looks like this:
+This will create a configuration file in `config/shuttle.yml` who looks like this:
 
-    Shuttle.setup do |s|
-      s.steps = [
-        'shuttle:git:check',
-        'shuttle:git:pull',
-        'shuttle:bundle',
-        'db:migrate',
-        'shuttle:spec',
-        'shuttle:git:push',
-        # 'log:clear',
-        # 'tmp:clear',
-      ]
-    
-      # s.stages = {
-      #   staging:    'your@server.com:staging-repository.git',
-      #   production: 'your@server.com:production-repository.git'
-      # }
-    end
+    steps:
+      - shuttle:git:check
+      - shuttle:git:pull
+      - shuttle:bundle
+      - db:migrate
+      - shuttle:spec
+      - shuttle:git:push
+      # - log:clear
+      # - tmp:clear
+
+    # stages:
+    #   staging:    your@server.com:staging-repository.git
+    #   production: your@server.com:production-repository.git
 
 ### Understanding
 
