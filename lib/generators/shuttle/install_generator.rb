@@ -4,7 +4,7 @@ module Shuttle
       source_root File.expand_path('../templates', __FILE__)
 
       def copy_install_file
-        template 'shuttle.rb', 'config/initializers/shuttle.rb'
+        template 'shuttle.yml', 'config/shuttle.yml'
       end
     end
   end
