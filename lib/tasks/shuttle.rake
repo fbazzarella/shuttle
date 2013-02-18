@@ -15,11 +15,11 @@ namespace :shuttle do
     end
 
     task :pull do
-      sh "git pull --rebase"
+      sh 'git pull --rebase'
     end
 
     task :push do
-      sh "git push"
+      sh 'git push'
     end
   end
 

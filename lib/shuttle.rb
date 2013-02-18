@@ -1,4 +1,4 @@
-require "shuttle/railtie"
+require 'shuttle/railtie'
 
 module Shuttle
   def self.yaml
