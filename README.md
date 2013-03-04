@@ -76,6 +76,10 @@ You can deploy on how many repositories you want at once, as long as they are co
 
 **Note**: before deploy, it will integrate the app.
 
+## Thanks
+
+[Anna Cruz](http://twitter.com/yuizinha) for contributing in the README translation and revision.
+
 ## Contributing
 
 1. Fork it
